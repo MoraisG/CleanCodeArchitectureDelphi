@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{8F799261-E2C1-41E5-A1D5-CC625E7B584D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="sample\ccatParte01.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="tests\ccatParte01Tests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ccatParte01">
+        <MSBuild Projects="sample\ccatParte01.dproj"/>
+    </Target>
+    <Target Name="ccatParte01:Clean">
+        <MSBuild Projects="sample\ccatParte01.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ccatParte01:Make">
+        <MSBuild Projects="sample\ccatParte01.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ccatParte01Tests">
+        <MSBuild Projects="tests\ccatParte01Tests.dproj"/>
+    </Target>
+    <Target Name="ccatParte01Tests:Clean">
+        <MSBuild Projects="tests\ccatParte01Tests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ccatParte01Tests:Make">
+        <MSBuild Projects="tests\ccatParte01Tests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ccatParte01;ccatParte01Tests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ccatParte01:Clean;ccatParte01Tests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ccatParte01:Make;ccatParte01Tests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
