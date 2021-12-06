@@ -2,7 +2,7 @@ unit DTO.Pessoa;
 
 interface
 
-uses Ecommerce.Types;
+uses Types.CPF;
 
 type
   TPessoa = class

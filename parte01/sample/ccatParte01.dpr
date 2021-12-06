@@ -6,7 +6,7 @@ program ccatParte01;
 uses
   System.SysUtils,
   DTO.Pessoa in 'src\dto\DTO.Pessoa.pas',
-  Ecommerce.Types in 'src\types\Ecommerce.Types.pas';
+  Types.CPF in 'src\types\Types.CPF.pas';
 
 Var
   LPessoa: TPessoa;

@@ -1,4 +1,4 @@
-unit Ecommerce.Types;
+unit Types.CPF;
 
 interface
 
@@ -14,8 +14,7 @@ type
     FSegundoDigitoVerificador: Integer;
 
   const
-    TAMANHO_MINIMO_CPF = 11;
-    TAMANHO_MAXIMO_CPF = 14;
+    TAMANHO_CPF = 11;
     FATOR_PRIMEIRO_DIGITO_VERIFICADOR = 11;
     FATOR_SEGUNDO_DIGITO_VERIFICADOR = 12;
     DIVISOR_DO_DIGITO = 11;
@@ -26,7 +25,9 @@ type
     function CalcularDigitoVerificador(AValue: Integer): Integer;
     function GetTamanhoCPF(AValue: String): Integer;
     function GetPosicaoStringAjustada(AContador: Integer): Integer;
-    function RemoverCaracteres: String;
+    procedure RemoverCaracteres;
+    procedure ValidarTamanho;
+    procedure ValidarSeTodosNumerosSaoIguais;
     function Split(AValue: String): TArray<String>;
   public
     class operator Implicit(AValue: String): TCPF;
@@ -112,21 +113,15 @@ begin
 end;
 
 class operator TCPF.Implicit(AValue: String): TCPF;
-var
-  LTamanho: Integer;
 begin
   if AValue.IsEmpty then
     raise Exception.Create('O CPF não pode ser vazio');
-  LTamanho := Length(AValue);
-  if not((CompareValue(LTamanho, TAMANHO_MINIMO_CPF) >= EqualsValue) or
-    (CompareValue(LTamanho, TAMANHO_MAXIMO_CPF) <= LessThanValue)) then
-    raise Exception.Create('O tamanho do CPF não é válido');
   Result.FCPF := AValue.Replace(' ', EmptyStr);
 end;
 
-function TCPF.RemoverCaracteres: String;
+procedure TCPF.RemoverCaracteres;
 begin
-  Result := FCPF.Replace('.', EmptyStr).Replace('-', EmptyStr);
+  FCPF := FCPF.Replace('.', EmptyStr).Replace('-', EmptyStr);
 end;
 
 function TCPF.Split(AValue: String): TArray<String>;
@@ -153,7 +148,11 @@ end;
 function TCPF.Validar: Boolean;
 begin
   try
-    FArrayCPF := Split(RemoverCaracteres);
+    Result := False;
+    RemoverCaracteres;
+    ValidarTamanho;
+    ValidarSeTodosNumerosSaoIguais;
+    FArrayCPF := Split(FCPF);
     CalcularSomaDoPrimeiroDigitoVerificador;
     FPrimeiroDigitoVerificador := CalcularDigitoVerificador
       (FSomaDoPrimeiroDigitoVerificador);
@@ -167,9 +166,33 @@ begin
   except
     on E: Exception do
     begin
-      raise Exception.Create('Erro ao validar o CPF');
+
     end;
-  end; 
+  end;
+end;
+
+procedure TCPF.ValidarSeTodosNumerosSaoIguais;
+var
+  LDigito: String;
+  LTamanho: Integer;
+begin
+  LTamanho := 0;
+  for LDigito in FCPF do
+  begin
+    if LDigito = FCPF[1] then
+    begin
+      Inc(LTamanho);
+    end;
+  end;
+
+  if LTamanho = TAMANHO_CPF then
+    raise Exception.Create('Todos os dígitos são iguais');
+end;
+
+procedure TCPF.ValidarTamanho;
+begin
+  if GetTamanhoCPF(FCPF) <> TAMANHO_CPF then
+    raise Exception.Create('CPF não possui o tamanho válido');
 end;
 
 end.

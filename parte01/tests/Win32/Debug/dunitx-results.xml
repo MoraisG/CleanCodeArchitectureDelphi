@@ -1,16 +1,19 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<test-results name="D:\Desenvolvimento\Fontes\BranasIO\CleanCodeArchitectureDelphi\parte01\tests\Win32\Debug\ccatParte01Tests.exe" total="4" errors="0" failures="0" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2021-11-28" time="0.001">
+<test-results name="D:\Desenvolvimento\Fontes\BranasIO\CleanCodeArchitectureDelphi\parte01\tests\Win32\Debug\ccatParte01Tests.exe" total="7" errors="0" failures="0" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2021-12-05" time="47.640">
   <culture-info current-culture="en" current-uiculture="en" />
-  <test-suite type="Assembly" name="ccatParte01Tests.exe" executed="true" result="Success" success="True" time="0.001" asserts="0">
+  <test-suite type="Assembly" name="ccatParte01Tests.exe" executed="true" result="Success" success="True" time="47.640" asserts="0">
     <results>
-        <test-suite type="Namespace" name="Tests" executed="true" result="Success" success="True" time="0.001" asserts="0" >
+        <test-suite type="Namespace" name="Tests" executed="true" result="Success" success="True" time="47.639" asserts="0" >
           <results>
-              <test-suite type="Fixture" name="TTestPessoa" executed="True" result="Success" success="True" time="0.001" >
+              <test-suite type="Fixture" name="TTestPessoa" executed="True" result="Success" success="True" time="47.639" >
                 <results>
-                  <test-case name="CPFValido. Verificar se o CPF é válido" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="CPFValido. Verificar se o CPF é válido" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="CPFInvalido. Verificar se o CPF é válido" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="CPFInvalido. Verificar se o CPF é válido" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="CPFValido. Verificar se o CPF é válido" executed="True" result="Success" success="True" time="4.604" asserts="0" />
+                  <test-case name="CPFTodosNumerosIguais. Não deve validar, números iguais" executed="True" result="Success" success="True" time="4.479" asserts="0" />
+                  <test-case name="CPFNumeroAleatorio. Não deve validar, números iguais" executed="True" result="Success" success="True" time="15.298" asserts="0" />
+                  <test-case name="CPFComNumerosAbaixoDoMinimo. Não deve validar, números iguais" executed="True" result="Success" success="True" time="7.650" asserts="0" />
+                  <test-case name="CPFComNumeroAcimaDoMaximo. Não deve validar, números iguais" executed="True" result="Success" success="True" time="6.485" asserts="0" />
+                  <test-case name="CPFInvalido. Verificar se o CPF é válido" executed="True" result="Success" success="True" time="7.774" asserts="0" />
+                  <test-case name="CPFInvalido. Verificar se o CPF é válido" executed="True" result="Success" success="True" time="1.347" asserts="0" />
                 </results>
               </test-suite>
           </results>

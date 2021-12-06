@@ -176,7 +176,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="src\dto\DTO.Pessoa.pas"/>
-        <DCCReference Include="src\types\Ecommerce.Types.pas"/>
+        <DCCReference Include="src\types\Types.CPF.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
